@@ -1,8 +1,22 @@
 <h1>Listing products</h1>
 
 <br>
-<button type="button" class="btn btn-info"><%= link_to 'New Product', new_product_path %></button>
+<button type="button" class="btn btn-default"><%= link_to 'New Product', new_product_path %></button>
 <br><br>
+
+
+<ul class="pagination">
+  <li><%= link_to '«', page: "#{@prev_page}" %></a></li>
+  <% @pages_count.times do |i| %>
+    <% if i == @current_page %>
+      <li class="active">
+    <% else %>
+      <li>
+    <% end %>
+    <%= link_to "#{i+1}", page: "#{i}" %></li>
+  <% end %>
+  <li><%= link_to '»', page: "#{@next_page}" %></a></li>
+</ul>
 
 <table class="table table-striped table-hover">
   <thead>

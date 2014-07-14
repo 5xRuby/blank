@@ -4,7 +4,22 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    #puts params[:page], '*'*100
+    @pages_count = (Product.all.size/10) + (((Product.all.size % 10) > 0) ? 1 : 0)
+    @current_page = params[:page].to_i
+    @next_page = if @current_page < (@pages_count - 1)
+                   @current_page + 1
+                 else
+                   @current_page
+                 end
+
+    @prev_page = if @current_page > 0
+                   @current_page - 1
+                 else
+                   @current_page
+                 end
+
+    @products = Product.limit(10).offset(10 * @current_page)  # @tonytonyjan++
   end
 
   # GET /products/1
