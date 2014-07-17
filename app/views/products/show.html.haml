@@ -1,18 +1,29 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1.text-center
   = @product.name
-%p
-  %b Description:
-  = @product.description
-%p
-  %b Price:
-  = @product.price
-%p
-  %b Quantity:
-  = @product.quantity
 
-= link_to 'Edit', edit_product_path(@product)
-\|
-= link_to 'Back', products_path
+%br/
+
+.row.text-center
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        = "Description"
+      .panel-body
+        = @product.description
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        = "Price"
+      .panel-body
+        = @product.price
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        = "Quantity"
+      .panel-body
+        = @product.quantity
+  .col-md-12
+    = link_to 'Edit', edit_product_path(@product), class: 'btn btn-primary'
+    = link_to 'Back', products_path, class: 'btn btn-link'
