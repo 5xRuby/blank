@@ -28,11 +28,11 @@
 </table>
 
 <ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
+  <li><%= link_to '«', products_path(p: 1) %></li>
   <% @max_page.times.each do |page| %>
     <%= page_li page + 1 %>
   <% end %>
-  <li><a href="#">&raquo;</a></li>
+  <li><%= link_to '»', products_path(p: @max_page) %></li>
 </ul>
 
 <br>
