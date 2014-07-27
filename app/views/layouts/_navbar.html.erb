@@ -19,6 +19,18 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
+      <%= form_tag products_path, method: :get, class: 'navbar-form navbar-left', role: :search do %>
+        <div class="form-group">
+          <%= number_field_tag :min, params[:min], class: 'form-control', placeholder: 'Min' %>
+          <%= number_field_tag :max, params[:max], class: 'form-control', placeholder: 'Max' %>
+          <select name="order" class="form-control">
+            <option value="">Select Order</option>
+            <%= options_for_select %i[price volume], params[:order] %>
+          </select>
+        </div>
+        <div class="checkbox"><label><%= check_box_tag :desc, nil, params[:desc] %> desc?</label></div>
+        <%= button_tag 'Search', class: 'btn btn-default' %>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li class="dropdown">

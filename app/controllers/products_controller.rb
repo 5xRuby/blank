@@ -6,6 +6,10 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @products = @products.where 'price > ?', params[:min] if params[:min].present?
+    @products = @products.where 'price < ?', params[:max] if params[:max].present?
+    xsc = params[:desc] ? :desc : :asc
+    @products = @products.order(params[:order] => xsc) if params[:order]
   end
 
   # GET /products/1
