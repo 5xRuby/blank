@@ -1,11 +1,20 @@
-# 練習
+## 作業 2
 
-- 製作一個俱有新增、檢視、編輯、刪除的產品資料庫系統
-- 使用 Twitter Bootstrap 美化
+### 取得原始碼
 
-# 繳交方式
+1. 拜訪 https://github.com/5xRuby/blank
+2. 將 repository fork 到自己的帳號下
 
-1. Fork 此專案
-2. Clone 自己 fork 來的 repository，例：`git clone git@github.com/YOUR_NAME/blank.git`
-2. 完成上述練習
-3. 送 Pull Request 到此專案
+    ![](http://i.imgur.com/ZlpWIKR.png)
+
+3. Clone 自己帳號下的 respository
+
+        git clone git@github.com:5xRuby/blank.git
+
+### 專案初始化
+
+```
+bundle
+rake db:migrate
+rake fake:categories fake:products
+```
