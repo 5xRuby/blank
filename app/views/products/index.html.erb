@@ -27,6 +27,14 @@
   </tbody>
 </table>
 
+<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <% @max_page.times.each do |page| %>
+    <%= page_li page + 1 %>
+  <% end %>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+
 <br>
 
 <%= link_to 'New Product', new_product_path %>

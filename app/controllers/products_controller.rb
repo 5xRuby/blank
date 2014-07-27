@@ -10,6 +10,12 @@ class ProductsController < ApplicationController
     @products = @products.where 'price < ?', params[:max] if params[:max].present?
     xsc = params[:desc] ? :desc : :asc
     @products = @products.order(params[:order] => xsc) if params[:order]
+
+    per_page = 10
+    page = params[:p].to_i - 1
+    offset = page * per_page
+    @max_page = Product.count / per_page + 1
+    @products = @products.limit(per_page).offset(offset)
   end
 
   # GET /products/1
