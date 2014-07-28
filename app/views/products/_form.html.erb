@@ -3,10 +3,36 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :name_confirmation %>
+    <%= f.input :name_confirmation, input_html: { value: @product.name } %>
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :volume %>
+
+    <!-- <%= f.association :category %> -->
+
+    <!-- <div class="form-group select required product_category">
+      <%= label_tag 'Category', for: :category_id, class: 'select optional col-sm-1 control-label' do %>
+        <%= 'Category' %>
+      <% end %>
+      <div class="col-sm-11">
+        <%= select_tag 'product[category_id]',
+          options_for_select(Category.all.map { |c| [c.name, c.id] }, @product.category_id),
+          class: 'select required form-control' %>
+      </div>
+    </div> -->
+
+    <div class="form-group select optional product_category">
+      <label class="select optional col-sm-1 control-label" for="product_category_id">Category</label>
+      <div class="col-sm-11">
+        <select class="select optional form-control" id="product_category_id" name="product[category_id]">
+          <% @categories.each do |c| %>
+            <option value=<%= c.id %> <%= c.id == @product.category.id ? 'selected="selected"' : nil rescue nil %>>
+              <%= c.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">
