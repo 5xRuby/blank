@@ -21,6 +21,6 @@ module ApplicationHelper
 
   def page_li number
     is_active = params[:p].to_i == number ? :active : nil
-    content_tag :li, link_to(number, products_path(p: number)), class: is_active
+    content_tag :li, link_to(number, products_path(request.GET.merge p: number)), class: is_active
   end
 end
