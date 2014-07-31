@@ -18,4 +18,13 @@ namespace :fake do
       Category.create name: "分類 #{i}"
     end
   end
+
+  desc '創造假的購物車'
+  task cart: :environment do
+    products = Product.all
+    User.find_each do |user|
+      cart = user.cart || user.create_cart
+      cart.line_items.create products.sample(10).map{ |product| {product: product, volume: rand(10) + 1} }
+    end
+  end
 end

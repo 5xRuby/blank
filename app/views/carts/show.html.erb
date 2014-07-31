@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1>我的購物車</h1>
+  <%= link_to '清空', cart_path, method: :delete, data: {confirm: '確定？'} %>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>產品</th>
+      <th>數量</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.line_items.each do |item| %>
+      <tr>
+        <td><%= link_to item.product.name, item.product %></td>
+        <td>
+          <%= form_for item do |f| %>
+            <%= f.number_field :volume %><%= f.submit '更新數量' %>
+          <% end %>
+        </td>
+        <td><%= link_to '從購物車刪除', line_item_path(item), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

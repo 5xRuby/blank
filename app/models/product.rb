@@ -4,4 +4,5 @@ class Product < ActiveRecord::Base
   validates :name, confirmation: true
 
   belongs_to :category
+  has_many :line_items
 end

@@ -14,9 +14,10 @@ module ApplicationHelper
       }
     end
   end
-  def nav_li name, path
+
+  def nav_li name, path, **options
     is_active = request.path == path ? :active : nil
-    content_tag :li, link_to(name, path), class: is_active
+    content_tag :li, link_to(name, path, **options), class: is_active
   end
 
   def page_li number
