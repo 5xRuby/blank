@@ -17,10 +17,15 @@
   <strong>Volume:</strong>
   <%= @product.volume %>
 </p>
-<%= form_tag line_items_path do %>
+<%= form_tag line_items_path, class: 'form-inline', role: :form do %>
   <%= hidden_field_tag :product_id, @product.id %>
-  <%= number_field_tag :volume %>
-  <%= submit_tag '加入購物車' %>
+  <div class="input-group">
+    <%= number_field_tag :volume, nil, class: 'form-control input-lg', placeholder: '數量', min: 1, max: @product.volume %>
+    <span class="input-group-btn">
+      <%= submit_tag '加入購物車', class: 'btn btn-lg btn-primary' %>
+    </span>
+  </div>
 <% end %>
+<hr>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

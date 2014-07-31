@@ -24,4 +24,8 @@ module ApplicationHelper
     is_active = params[:p].to_i == number ? :active : nil
     content_tag :li, link_to(number, products_path(request.GET.merge p: number)), class: is_active
   end
+
+  def icon_tag name, content = nil
+    content_tag :span, content, class: "glyphicon glyphicon-#{name}"
+  end
 end

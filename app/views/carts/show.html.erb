@@ -1,6 +1,5 @@
 <div class="page-header">
   <h1>我的購物車</h1>
-  <%= link_to '清空', cart_path, method: :delete, data: {confirm: '確定？'} %>
 </div>
 <table class="table">
   <thead>
@@ -15,12 +14,19 @@
       <tr>
         <td><%= link_to item.product.name, item.product %></td>
         <td>
-          <%= form_for item do |f| %>
-            <%= f.number_field :volume %><%= f.submit '更新數量' %>
+          <%= form_for item, html: {class: 'form-inline', role: :form} do |f| %>
+            <div class="input-group">
+              <%= f.number_field :volume, class: 'form-control', min: 1, max: item.product.volume %>
+              <span class="input-group-btn">
+                <%= f.submit '更新', class: 'btn btn-default' %>
+              </span>
+            </div>
           <% end %>
         </td>
-        <td><%= link_to '從購物車刪除', line_item_path(item), method: :delete %></td>
+        <td><%= link_to icon_tag('trash'), line_item_path(item), method: :delete, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<hr>
+<%= link_to '清空', cart_path, method: :delete, data: {confirm: '確定？'}, class: 'btn btn-danger' %>
