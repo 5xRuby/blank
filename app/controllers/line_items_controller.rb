@@ -22,7 +22,7 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    line_item = LineItem.find(params[:id])
+    line_item = current_cart.line_items.find(params[:id])
     line_item.destroy
     redirect_to cart_path, notice: '已更新購物車'
   end
