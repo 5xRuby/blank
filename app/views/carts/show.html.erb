@@ -23,7 +23,7 @@
             </div>
           <% end %>
         </td>
-        <td><%= link_to icon_tag('trash'), line_item_path(item), method: :delete, class: 'btn btn-danger' %></td>
+        <td><%= link_to icon_tag('trash'), line_item_path(item), method: :delete, title: '從購物車刪除', class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

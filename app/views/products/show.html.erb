@@ -22,7 +22,7 @@
   <div class="input-group">
     <%= number_field_tag :volume, nil, class: 'form-control input-lg', placeholder: '數量', min: 1, max: @product.volume %>
     <span class="input-group-btn">
-      <%= submit_tag '加入購物車', class: 'btn btn-lg btn-primary' %>
+      <%= button_tag icon_tag('shopping-cart'), title: '加入購物車', class: 'btn btn-lg btn-primary' %>
     </span>
   </div>
 <% end %>
