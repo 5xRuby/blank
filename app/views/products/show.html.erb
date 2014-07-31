@@ -20,7 +20,7 @@
 <%= form_tag line_items_path, class: 'form-inline', role: :form do %>
   <%= hidden_field_tag :product_id, @product.id %>
   <div class="input-group">
-    <%= number_field_tag :volume, nil, class: 'form-control input-lg', placeholder: '數量', min: 1, max: @product.volume %>
+    <%= number_field_tag :volume, nil, class: 'form-control input-lg', placeholder: '數量', min: 1 %>
     <span class="input-group-btn">
       <%= button_tag icon_tag('shopping-cart'), title: '加入購物車', class: 'btn btn-lg btn-primary' %>
     </span>

@@ -14,16 +14,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <%= nav_dropdown '產品', '#' do %>
-            <%= nav_li '列表', products_path %>
-            <%= nav_li '新增', new_product_path %>
+        <%= nav_dropdown icon_tag('usd', '產品'), '#' do %>
+            <%= nav_li icon_tag('list', '列表'), products_path %>
+            <%= nav_li icon_tag('plus', '新增'), new_product_path %>
         <% end %>
-        <%= nav_dropdown '分類', '#' do %>
-            <%= nav_li '列表', categories_path %>
-            <%= nav_li '新增', new_category_path %>
+        <%= nav_dropdown icon_tag('list', '分類'), '#' do %>
+            <%= nav_li icon_tag('list', '列表'), categories_path %>
+            <%= nav_li icon_tag('plus', '新增'), new_category_path %>
         <% end %>
-        <%= nav_li '關於', about_path %>
-        <%= nav_li '聯絡', contact_path %>
+        <%= nav_li icon_tag('question-sign', '關於'), about_path %>
+        <%= nav_li icon_tag('info-sign', '聯絡'), contact_path %>
       </ul>
       <%= form_tag products_path, method: :get, class: 'navbar-form navbar-left', role: :search do %>
         <div class="form-group">
@@ -42,10 +42,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <%= nav_li '我的購物車', cart_path %>
-            <%= nav_li 'Edit Profile', edit_user_registration_path %>
+            <%= nav_li icon_tag('shopping-cart', '購物車'), cart_path %>
+            <%= nav_li icon_tag('user', '帳號'), edit_user_registration_path %>
             <li class="divider"></li>
-            <%= nav_li 'Sign out', destroy_user_session_path, method: :delete %>
+            <%= nav_li icon_tag('off', '登出'), destroy_user_session_path, method: :delete %>
           </ul>
         </li>
         <% else %>

@@ -16,7 +16,7 @@
         <td>
           <%= form_for item, html: {class: 'form-inline', role: :form} do |f| %>
             <div class="input-group">
-              <%= f.number_field :volume, class: 'form-control', min: 1, max: item.product.volume %>
+              <%= f.number_field :volume, class: 'form-control', min: 1 %>
               <span class="input-group-btn">
                 <%= f.submit '更新', class: 'btn btn-default' %>
               </span>

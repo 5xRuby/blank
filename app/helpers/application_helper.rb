@@ -26,6 +26,8 @@ module ApplicationHelper
   end
 
   def icon_tag name, content = nil
-    content_tag :span, content, class: "glyphicon glyphicon-#{name}"
+    ret = content_tag(:span, nil, class: "glyphicon glyphicon-#{name}")
+    ret += " #{content}" if content
+    ret
   end
 end
