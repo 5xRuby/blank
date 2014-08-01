@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form', '3.1.0.rc2'
+gem 'rails-i18n'
