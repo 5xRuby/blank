@@ -17,7 +17,8 @@ class OrdersController < ApplicationController
     else
       order = Order.new_for current_cart
       if order.save
-        redirect_to Order.create_for current_cart, notice: '訂單已經新增'
+        current_cart.destroy
+        redirect_to order, notice: '訂單已經新增'
       else
         redirect_to cart_path, alert: '無法新增訂單'
       end

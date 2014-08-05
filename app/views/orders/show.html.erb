@@ -1,2 +1,28 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="page-header">
+  <h1>訂單 #<%= @order.id %></h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>產品</th>
+      <th>單價</th>
+      <th>數量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.product_name %></td>
+        <td><%= order_item.product_price %></td>
+        <td><%= order_item.volume %></td>
+        <td><%= order_item.subtotal %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="3"></td>
+      <td colspan="2">總計：<%= @order.total %></td>
+    </tr>
+  </tbody>
+</table>

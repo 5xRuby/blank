@@ -19,4 +19,8 @@ class Order < ActiveRecord::Base
     order = new_for cart
     order.create
   end
+
+  def total
+    order_items.to_a.sum(&:subtotal)
+  end
 end

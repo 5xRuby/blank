@@ -32,7 +32,8 @@
     <% end %>
     <tr>
       <td colspan="3"></td>
-      <td colspan="2">總計：<%= number_to_currency @cart.total, locale: 'zh-TW', precision: 0 %></td>
+      <td>總計：<%= number_to_currency @cart.total, locale: 'zh-TW', precision: 0 %></td>
+      <td><%= link_to '下訂', orders_path, method: :post, class: 'btn btn-success' %></td>
     </tr>
   </tbody>
 </table>

@@ -3,7 +3,7 @@ class CreateOrderItems < ActiveRecord::Migration
     create_table :order_items do |t|
       t.references :order, index: true
       t.string :product_name
-      t.string :product_price
+      t.integer :product_price
       t.integer :volume
 
       t.timestamps

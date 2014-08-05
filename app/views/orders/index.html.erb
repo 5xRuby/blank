@@ -1,2 +1,22 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div class="page-header">
+  <h1>我的訂單</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>#</th>
+      <th>下訂時間</th>
+    </tr>
+  </thead>
+  <tnody>
+    <% current_user.orders.each do |order| %>
+      <tr>
+        <td><%= link_to '查看', order, class: 'btn btn-primary' %></td>
+        <td><%= order.id %></td>
+        <td><%= l order.created_at, format: :short %></td>
+      </tr>
+    <% end %>
+  </tnody>
+</table>
