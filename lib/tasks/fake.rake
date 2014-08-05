@@ -20,11 +20,22 @@ namespace :fake do
   end
 
   desc '創造假的購物車'
-  task cart: :environment do
+  task carts: :environment do
     products = Product.all
     User.find_each do |user|
       cart = user.cart || user.create_cart
       cart.line_items.create products.sample(10).map{ |product| {product: product, volume: rand(10) + 1} }
+    end
+  end
+
+  desc '創造假的訂單'
+  task orders: :environment do
+    products = Product.all
+    User.find_each do |user|
+      order = user.orders.create
+      products.sample(10).each do |product|
+        order.order_items.create product_name: product.name, product_price: product.price, volume: rand(10) + 1
+      end
     end
   end
 end
