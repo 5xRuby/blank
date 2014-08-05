@@ -43,6 +43,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <%= nav_li icon_tag('shopping-cart', '購物車'), cart_path %>
+            <%= nav_li icon_tag('list-alt', '訂單記錄'), orders_path %>
             <%= nav_li icon_tag('user', '帳號'), edit_user_registration_path %>
             <li class="divider"></li>
             <%= nav_li icon_tag('off', '登出'), destroy_user_session_path, method: :delete %>
