@@ -5,7 +5,7 @@ class LineItemsController < ApplicationController
     line_item = current_cart.line_items.find_or_initialize_by product: product
     line_item.volume = line_item.volume.to_i + params[:volume].to_i
     if line_item.save
-      redirect_to product, notice: '已加入購物車'
+      redirect_to cart_path, notice: '已加入購物車'
     else
       redirect_to product, alert: '無法加入購物車'
     end

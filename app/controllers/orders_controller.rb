@@ -15,13 +15,11 @@ class OrdersController < ApplicationController
     if current_cart.line_items.empty?
       redirect_to cart_path, alert: '你的購物車是空的'
     else
-      order = Order.new_for current_cart
-      if order.save
-        current_cart.destroy
-        redirect_to order, notice: '訂單已經新增'
-      else
-        redirect_to cart_path, alert: '無法新增訂單'
-      end
+      order = Order.create_for! current_cart
+      redirect_to order, notice: '訂單已經新增'
+      current_cart.destroy
     end
+  rescue
+    redirect_to cart_path, alert: '無法新增訂單'
   end
 end
