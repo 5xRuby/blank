@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   def self.create_for! cart
     ActiveRecord::Base.transaction do # 只要出差錯就回溯資料庫
       order = Order.create! user: cart.user
-      cart.line_items.each do |line_item|
+      cart.line_items.includes(:product).each do |line_item|
         line_item.product.lock!.decrement(:volume, line_item.volume).save!
         order.order_items << OrderItem.create_from!(line_item)
       end
