@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
 
     per_page = 10
     page = params[:p].to_i - 1
+    page = 0 if page < 0
     offset = page * per_page
     @max_page = @products.count / per_page + 1
     @products = @products.limit(per_page).offset(offset)
